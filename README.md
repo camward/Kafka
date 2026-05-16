@@ -16,3 +16,13 @@ $ cd producer
 # установить зависимости
 $ npm i
 ```
+
+## Consumer
+
+```bash
+# перейти в папку consumer
+$ cd consumer
+
+# установить зависимости
+$ npm i
+```
