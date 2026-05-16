@@ -1,11 +1,11 @@
+import "dotenv/config";
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
 import { Kafka } from "kafkajs";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
-import "dotenv/config";
-import { users } from "./db/schema";
+import { users } from "./db/schema.ts";
 
 const app = new Hono();
 app.use(cors({ origin: "*" }));

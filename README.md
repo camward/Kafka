@@ -1,10 +1,17 @@
 # Kafka
 
-## Base
+## Docker
 
 ```bash
 # поднять окружение
 $ docker compose up -d
+```
+
+## Пересоздать контейнеры с очисткой томов
+
+```bash
+docker compose down -v
+docker compose up -d
 ```
 
 ## Producer
@@ -15,6 +22,9 @@ $ cd producer
 
 # установить зависимости
 $ npm i
+
+# запустить приложение
+$ npm run dev
 ```
 
 ## Consumer
@@ -25,6 +35,9 @@ $ cd consumer
 
 # установить зависимости
 $ npm i
+
+# запустить приложение
+$ npm run dev
 ```
 
 ## UI

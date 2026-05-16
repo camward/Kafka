@@ -16,7 +16,7 @@ services:
     ports: ["2181:2181"]
 
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:7.3.3
     depends_on: [zookeeper]
     ports: ["9092:9092"]
     environment:
