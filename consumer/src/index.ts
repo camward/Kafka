@@ -10,6 +10,7 @@ app.use(cors({ origin: "*" }));
 
 const users: string[] = [];
 const subs = new Set<(data: string) => void>();
+
 const notify = (d: string) => {
   users.push(d);
   subs.forEach((f) => f(d));
@@ -19,6 +20,7 @@ app.get("/sse", (c) =>
   streamSSE(c, async (stream) => {
     const send = (d: string) => stream.writeSSE({ data: d });
     subs.add(send);
+
     try {
       for (const u of users) await send(u);
       await new Promise(() => {});
@@ -29,7 +31,7 @@ app.get("/sse", (c) =>
 );
 
 const consumer = new Kafka({ brokers: [process.env.KAFKA_BROKER!] }).consumer({
-  groupId: "ui-group",
+  groupId: process.env.KAFKA_GROUP_ID!,
 });
 await consumer.connect();
 await consumer.subscribe({
@@ -44,4 +46,5 @@ await consumer.run({
 serve({ fetch: app.fetch, port: 3002 }, (i) =>
   console.log(`Consumer is running on port: ${i.port}`)
 );
+
 process.on("SIGTERM", () => consumer.disconnect());

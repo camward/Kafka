@@ -9,10 +9,12 @@ export default function App() {
 
   useEffect(() => {
     const es = new EventSource('http://localhost:3002/sse');
+
     es.onmessage = e => setUsers(prev => {
       const u = JSON.parse(e.data);
       return prev.some(x => x.id === u.id) ? prev : [...prev, u];
     });
+
     return () => es.close();
   }, []);
 
@@ -20,11 +22,14 @@ export default function App() {
     e.preventDefault();
     if (!login.trim()) return;
     setBusy(true);
+
     await fetch('http://localhost:3001/users', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ login })
     });
-    setLogin(''); setBusy(false);
+
+    setLogin('');
+    setBusy(false);
   };
 
   return (

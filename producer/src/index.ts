@@ -36,6 +36,7 @@ app.post("/users", async (c) => {
 });
 
 await producer.connect();
+
 serve({ fetch: app.fetch, port: 3001 }, (i) =>
   console.log(`Producer is running on port: ${i.port}`)
 );

@@ -5,45 +5,18 @@
 ```bash
 # поднять окружение
 $ docker compose up -d
+
+# пересоздать контейнеры с очисткой томов
+# docker compose down -v
+# docker compose up -d
 ```
 
-## Пересоздать контейнеры с очисткой томов
+## Producer/Consumer/UI
 
 ```bash
-docker compose down -v
-docker compose up -d
-```
-
-## Producer
-
-```bash
-# перейти в папку producer
+# перейти в папку producer/consumer/ui
 $ cd producer
-
-# установить зависимости
-$ npm i
-
-# запустить приложение
-$ npm run dev
-```
-
-## Consumer
-
-```bash
-# перейти в папку consumer
 $ cd consumer
-
-# установить зависимости
-$ npm i
-
-# запустить приложение
-$ npm run dev
-```
-
-## UI
-
-```bash
-# перейти в папку ui
 $ cd ui
 
 # установить зависимости
@@ -52,3 +25,5 @@ $ npm i
 # запустить приложение
 $ npm run dev
 ```
+
+![](image.png)
